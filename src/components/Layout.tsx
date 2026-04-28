@@ -21,7 +21,6 @@ export const Layout: React.FC<LayoutProps> = ({ children, activeCategory, onCate
     { id: "youth", label: "Youth Categories", icon: Users },
     { id: "clubs", label: "Moroccan Clubs", icon: History },
     { id: "records", label: "Records", icon: Crown },
-    { id: "next-glory", label: "Next Glory", icon: Trophy },
   ];
 
   return (

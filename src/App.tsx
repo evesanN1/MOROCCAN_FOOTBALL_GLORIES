@@ -94,12 +94,12 @@ export default function App() {
                               initial={{ opacity: 0, scale: 0.8, y: 20 }}
                               animate={{ opacity: 1, scale: 1, y: 0 }}
                               transition={{ type: "spring", stiffness: 200, damping: 20 }}
-                              className="w-[225px] h-[223px] bg-white rounded-full flex items-center justify-center p-4 shadow-[0_20px_40px_rgba(0,0,0,0.15)] z-20 border-4 border-white"
+                              className="w-[225px] h-[223px] bg-white rounded-full flex items-center justify-center p-2 shadow-[0_20px_40px_rgba(0,0,0,0.15)] z-20 border-4 border-white"
                             >
                               <img 
                                 src={activeEra.trophyImage} 
                                 alt="Trophy" 
-                                className="w-full h-full object-contain mix-blend-multiply drop-shadow-md rounded-full border-solid border-2 border-slate-100"
+                                className="w-full h-full object-contain mix-blend-multiply drop-shadow-md"
                               />
                             </motion.div>
                           )}
