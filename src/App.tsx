@@ -17,6 +17,7 @@ import { Legends } from "./components/Legends";
 import { YouthCategories } from "./components/YouthCategories";
 import { MoroccanClubs } from "./components/MoroccanClubs";
 import { Records } from "./components/Records";
+import { NextGlory } from "./components/NextGlory";
 import { TROPHY_ERAS, TrophyEra } from "./data";
 import { motion, AnimatePresence } from "motion/react";
 
@@ -39,6 +40,8 @@ export default function App() {
         return <MoroccanClubs />;
       case "records":
         return <Records />;
+      case "next-glory":
+        return <NextGlory />;
       case "atlas-lions":
       default:
         return (
@@ -84,19 +87,19 @@ export default function App() {
                       {/* Trophy & Jersey Showcase */}
                       <div className="shrink-0 relative flex items-center justify-center w-full lg:w-auto mt-8 lg:mt-0">
                         <div className="absolute inset-0 bg-gradient-to-tr from-morocco-red/10 to-morocco-green/10 rounded-full blur-3xl" />
-                        <div className="relative flex items-center p-8 bg-white/40 backdrop-blur-xl border border-white/60 rounded-[3rem] shadow-2xl">
+                        <div className="relative flex items-center p-8 bg-[#bfccb7] backdrop-blur-xl border border-white/60 rounded-[3rem] shadow-2xl">
                           {activeEra.trophyImage && (
                             <motion.div
                               key={`trophy-${activeEra.id}`}
                               initial={{ opacity: 0, scale: 0.8, y: 20 }}
                               animate={{ opacity: 1, scale: 1, y: 0 }}
                               transition={{ type: "spring", stiffness: 200, damping: 20 }}
-                              className="w-48 h-48 md:w-64 md:h-64 bg-white rounded-full flex items-center justify-center p-4 shadow-[0_20px_40px_rgba(0,0,0,0.15)] z-20"
+                              className="w-[225px] h-[223px] bg-white rounded-full flex items-center justify-center p-4 shadow-[0_20px_40px_rgba(0,0,0,0.15)] z-20 border-4 border-white"
                             >
                               <img 
                                 src={activeEra.trophyImage} 
                                 alt="Trophy" 
-                                className="w-full h-full object-contain mix-blend-multiply drop-shadow-md rounded-full"
+                                className="w-full h-full object-contain mix-blend-multiply drop-shadow-md rounded-full border-solid border-2 border-slate-100"
                               />
                             </motion.div>
                           )}
