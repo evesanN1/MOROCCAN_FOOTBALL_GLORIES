@@ -6,8 +6,6 @@ import { ScrollArea } from "../../components/ui/scroll-area";
 import { Separator } from "../../components/ui/separator";
 import { cn } from "../../lib/utils";
 
-import { NextGloryModal } from "./NextGloryModal";
-
 interface LayoutProps {
   children: React.ReactNode;
   activeCategory: string;
@@ -78,28 +76,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, activeCategory, onCate
             ))}
           </div>
 
-          <div className="mt-12 px-4">
-            <NextGloryModal>
-              <button className="w-full text-left p-6 rounded-2xl bg-gradient-to-br from-morocco-green to-emerald-900 text-white relative overflow-hidden shadow-xl shadow-morocco-green/20 cursor-pointer hover:scale-[1.02] transition-transform moroccan-glaze focus:outline-none">
-                <div className="absolute inset-0 zellige-pattern opacity-10 mix-blend-overlay" />
-                <div className="absolute top-0 right-0 p-4 opacity-20">
-                  <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center p-2 shadow-sm border border-slate-100/50 rotate-12">
-                     <img src="https://static.vecteezy.com/system/resources/previews/008/785/663/non_2x/fifa-world-cup-symbol-trophy-logo-mondial-champion-gold-design-abstract-illustration-free-vector.jpg" alt="Trophy" className="w-full h-full object-contain mix-blend-multiply rounded-full" />
-                  </div>
-                </div>
-                <h3 className="text-xs font-bold uppercase tracking-widest text-morocco-gold mb-2 relative z-10">Next Glory</h3>
-                <p className="text-sm font-medium leading-relaxed relative z-10">World Cup 2026 & 2030</p>
-                <div className="mt-4 h-1 w-full bg-white/20 rounded-full overflow-hidden relative z-10">
-                  <motion.div 
-                    className="h-full bg-morocco-gold" 
-                    initial={{ width: 0 }}
-                    animate={{ width: "75%" }}
-                    transition={{ duration: 2, ease: "easeOut" }}
-                  />
-                </div>
-              </button>
-            </NextGloryModal>
-          </div>
+          <div className="mt-12 px-4" />
         </ScrollArea>
       </aside>
 

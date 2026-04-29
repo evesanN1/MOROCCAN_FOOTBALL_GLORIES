@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Trophy, Calendar, MapPin, Shield } from "lucide-react";
-import { motion } from "motion/react";
+import { Calendar, MapPin, Shield } from "lucide-react";
 
 const TARGET_2025_AFCON = new Date("2025-12-21T00:00:00Z").getTime();
 const TARGET_2026 = new Date("2026-06-11T00:00:00Z").getTime();
@@ -24,61 +23,33 @@ function useCountdown(targetDate: number) {
   return { days: Math.max(0, days), hours: Math.max(0, hours), minutes: Math.max(0, minutes), seconds: Math.max(0, seconds) };
 }
 
-const CountdownDisplay = ({ target, title, location, opponent, trophyImg, description }: { target: number, title: string, location: string, opponent?: string, trophyImg: string, description: string }) => {
+const CountdownDisplay = ({ target, title, location, trophyImg }: { target: number, title: string, location: string, trophyImg: string }) => {
   const { days, hours, minutes, seconds } = useCountdown(target);
 
   return (
-    <div className="bg-white p-8 rounded-[2.5rem] border border-slate-100 relative overflow-hidden group shadow-sm">
-      <div className="absolute inset-0 zellige-pattern opacity-[0.03] group-hover:opacity-[0.05] transition-opacity pointer-events-none" />
+    <div className="bg-white/80 backdrop-blur-sm p-6 rounded-3xl border border-white/50 shadow-sm flex items-center gap-6 group hover:shadow-md transition-shadow">
+      <div className="w-20 h-20 bg-slate-50 rounded-2xl flex items-center justify-center p-3 shrink-0">
+        <img src={trophyImg} alt={title} className="w-full h-full object-contain mix-blend-multiply" />
+      </div>
       
-      <div className="flex flex-col lg:flex-row gap-12 items-center relative z-10">
-        <div className="flex-1">
-          <div className="flex items-center gap-3 mb-6">
-            <div className="h-[1px] w-12 bg-morocco-gold" />
-            <span className="text-xs font-bold text-morocco-gold uppercase tracking-[0.3em]">Future Vision</span>
-          </div>
-          
-          <h3 className="text-3xl md:text-5xl font-display font-extrabold text-slate-900 tracking-tighter mb-4 flex items-center gap-4">
-            <Calendar className="w-10 h-10 text-morocco-red" />
-            {title}
-          </h3>
-          
-          <p className="text-lg text-slate-500 mb-6 flex items-center gap-2">
-            <MapPin className="w-5 h-5" />
-            {location}
-          </p>
-          
-          <p className="text-slate-600 leading-relaxed font-serif italic mb-8 max-w-xl">
-            {description}
-          </p>
-
-          {opponent && (
-            <div className="mb-8 flex items-center gap-3 bg-slate-50 p-4 rounded-2xl border border-slate-100 w-fit">
-              <Shield className="w-6 h-6 text-morocco-green" />
-              <span className="text-base font-bold text-slate-700">Next Match: <span className="text-morocco-red">{opponent}</span></span>
+      <div className="flex-1">
+        <h4 className="text-lg font-bold text-slate-900 group-hover:text-morocco-green transition-colors">{title}</h4>
+        <p className="text-xs text-slate-500 flex items-center gap-1 mt-1">
+          <MapPin className="w-3 h-3" /> {location}
+        </p>
+        
+        <div className="flex gap-4 mt-3">
+          {[
+            { label: "D", value: days },
+            { label: "H", value: hours },
+            { label: "M", value: minutes },
+            { label: "S", value: seconds },
+          ].map((item, i) => (
+            <div key={i} className="flex flex-col items-center">
+              <span className="text-sm font-mono font-bold text-morocco-green">{item.value.toString().padStart(2, '0')}</span>
+              <span className="text-[8px] uppercase tracking-tighter text-slate-400 font-medium">{item.label}</span>
             </div>
-          )}
-
-          <div className="grid grid-cols-4 gap-6">
-            {[
-              { label: "Days", value: days },
-              { label: "Hours", value: hours },
-              { label: "Minutes", value: minutes },
-              { label: "Seconds", value: seconds },
-            ].map((item, i) => (
-              <div key={i} className="flex flex-col items-center bg-slate-50 py-6 px-4 rounded-3xl border border-slate-100 shadow-sm">
-                <span className="text-4xl font-bold text-morocco-green font-mono">{item.value.toString().padStart(2, '0')}</span>
-                <span className="text-[10px] uppercase tracking-widest text-slate-400 font-medium mt-2">{item.label}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="shrink-0 relative">
-          <div className="absolute inset-0 bg-gradient-to-tr from-morocco-red/20 to-morocco-green/20 rounded-full blur-3xl" />
-          <div className="relative w-64 h-64 md:w-80 md:h-80 bg-white rounded-full flex items-center justify-center p-8 shadow-2xl border-4 border-slate-50">
-            <img src={trophyImg} alt="Trophy" className="w-full h-full object-contain mix-blend-multiply drop-shadow-2xl" />
-          </div>
+          ))}
         </div>
       </div>
     </div>
@@ -87,40 +58,39 @@ const CountdownDisplay = ({ target, title, location, opponent, trophyImg, descri
 
 export const NextGlory = () => {
   return (
-    <div className="max-w-7xl mx-auto px-6 lg:px-12 py-12">
-      <div className="mb-16">
-        <h2 className="text-6xl font-display font-extrabold text-slate-900 tracking-tighter leading-tight mb-4">
-          CHASING <br/>
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-morocco-red to-morocco-green">THE NEXT FRONTIER</span>
-        </h2>
-        <p className="text-xl text-slate-500 font-serif italic max-w-2xl">
-          The path ahead for the Atlas Lions is paved with ambition. From hosting the world to conquering new stages, the journey continues.
-        </p>
+    <div className="mt-40 mb-20 pointer-events-none select-none">
+      <div className="relative mb-24">
+        <div className="flex items-center gap-4 mb-4">
+          <div className="h-[2px] w-16 bg-morocco-gold" />
+          <span className="text-sm font-bold text-morocco-gold uppercase tracking-[0.4em]">Historical Milestone</span>
+        </div>
+        
+        <div className="relative">
+          <h2 className="text-[14rem] md:text-[20rem] font-display font-black text-slate-900 tracking-tighter leading-[0.8] mb-0 opacity-95">
+            2025
+          </h2>
+          
+          <div className="absolute -bottom-16 left-0 w-full h-[300px] bg-gradient-to-br from-morocco-green via-morocco-green/95 to-morocco-red rounded-xl shadow-2xl z-[-1]" />
+        </div>
       </div>
 
-      <div className="space-y-12">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-48 pointer-events-auto">
         <CountdownDisplay 
           title="AFCON 2025" 
-          location="Kingdom of Morocco" 
+          location="Morocco" 
           target={TARGET_2025_AFCON}
-          description="Morocco hosts the 35th edition of the Africa Cup of Nations. The Atlas Lions look to secure their second continental title on home soil, fueled by the passion of millions."
           trophyImg="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6u6m6MvR8X20B3ZkX6V5_x9G5Y_6Y8L6Z6g&s"
         />
-
         <CountdownDisplay 
-          title="FIFA World Cup 2026™" 
-          location="USA, Canada & Mexico" 
+          title="World Cup 2026" 
+          location="North America" 
           target={TARGET_2026}
-          opponent="TBD (Group Stage)"
-          description="Following a historic semi-final run in Qatar, the Atlas Lions return to the world stage aiming to surpass their previous achievements in the first 48-team World Cup."
           trophyImg="https://static.vecteezy.com/system/resources/previews/008/785/663/non_2x/fifa-world-cup-symbol-trophy-logo-mondial-champion-gold-design-abstract-illustration-free-vector.jpg"
         />
-        
         <CountdownDisplay 
-          title="FIFA World Cup 2030™" 
-          location="Morocco, Spain & Portugal" 
+          title="World Cup 2030" 
+          location="Morocco & More" 
           target={TARGET_2030}
-          description="A historic joint-hosting that brings the World Cup to Moroccan soil for the first time in history. A celebration of football, culture, and unity across two continents."
           trophyImg="https://static.vecteezy.com/system/resources/previews/008/785/663/non_2x/fifa-world-cup-symbol-trophy-logo-mondial-champion-gold-design-abstract-illustration-free-vector.jpg"
         />
       </div>

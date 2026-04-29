@@ -40,8 +40,6 @@ export default function App() {
         return <MoroccanClubs />;
       case "records":
         return <Records />;
-      case "next-glory":
-        return <NextGlory />;
       case "atlas-lions":
       default:
         return (
@@ -87,19 +85,19 @@ export default function App() {
                       {/* Trophy & Jersey Showcase */}
                       <div className="shrink-0 relative flex items-center justify-center w-full lg:w-auto mt-8 lg:mt-0">
                         <div className="absolute inset-0 bg-gradient-to-tr from-morocco-red/10 to-morocco-green/10 rounded-full blur-3xl" />
-                        <div className="relative flex items-center p-8 bg-[#bfccb7] backdrop-blur-xl border border-white/60 rounded-[3rem] shadow-2xl">
+                        <div className="relative flex items-center p-8 bg-[#dfe6dd] backdrop-blur-xl border border-white/60 rounded-[3rem] shadow-2xl">
                           {activeEra.trophyImage && (
                             <motion.div
                               key={`trophy-${activeEra.id}`}
                               initial={{ opacity: 0, scale: 0.8, y: 20 }}
                               animate={{ opacity: 1, scale: 1, y: 0 }}
                               transition={{ type: "spring", stiffness: 200, damping: 20 }}
-                              className="w-[225px] h-[223px] bg-white rounded-full flex items-center justify-center p-2 shadow-[0_20px_40px_rgba(0,0,0,0.15)] z-20 border-4 border-white"
+                              className="w-[225px] h-[223px] bg-white rounded-full flex items-center justify-center shadow-[0_20px_40px_rgba(0,0,0,0.15)] z-20 border-4 border-white overflow-hidden"
                             >
                               <img 
                                 src={activeEra.trophyImage} 
                                 alt="Trophy" 
-                                className="w-full h-full object-contain mix-blend-multiply drop-shadow-md"
+                                className="w-full h-full object-cover mix-blend-multiply drop-shadow-md"
                               />
                             </motion.div>
                           )}
@@ -188,6 +186,7 @@ export default function App() {
                   </section>
                 </motion.div>
               </AnimatePresence>
+              <NextGlory />
             </div>
 
             <SidebarRight era={activeEra} />
