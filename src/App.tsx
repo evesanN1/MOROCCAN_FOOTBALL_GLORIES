@@ -17,7 +17,6 @@ import { Legends } from "./components/Legends";
 import { YouthCategories } from "./components/YouthCategories";
 import { MoroccanClubs } from "./components/MoroccanClubs";
 import { Records } from "./components/Records";
-import { NextGlory } from "./components/NextGlory";
 import { TROPHY_ERAS, TrophyEra } from "./data";
 import { motion, AnimatePresence } from "motion/react";
 
@@ -186,7 +185,6 @@ export default function App() {
                   </section>
                 </motion.div>
               </AnimatePresence>
-              <NextGlory />
             </div>
 
             <SidebarRight era={activeEra} />
